@@ -1,0 +1,15 @@
+### Read all movies
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/movies
+
+
+### Create a movie
+POST {{baseUrl}}/movies
+Content-Type: application/json
+
+{
+    "title":"START wars 6",
+    "duration":200,
+    "budget" : 900,
+    "link" : "https://moodle.vinci.be/my/"
+}
