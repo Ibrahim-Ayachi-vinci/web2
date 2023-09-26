@@ -8,12 +8,8 @@ POST {{baseUrl}}/movies
 Content-Type: application/json
 
 {
-    "title":"Start wars 4 ",
+    "title":"START wars 6",
     "duration":200,
     "budget" : 900,
     "link" : "https://moodle.vinci.be/my/"
 }
-
-
-### Delete movie identified by 2
-DELETE {{baseUrl}}/movies/2
