@@ -126,6 +126,7 @@ router.patch('/:id', (req,res) => {
 });
 
 router.put('/:id', (req, res) => {
+  console.log("Je suis dans la route Put")
   const title = req?.body?.title?.length !== 0 ? req.body.title : undefined;
   const duration = req?.body?.duration > 0 ? req.body.duration : undefined;
   const budget = req?.body?.budget > 0 ? req.body.budget : undefined;
@@ -134,14 +135,25 @@ router.put('/:id', (req, res) => {
   if (!title || !duration || !budget || !link) {return res.sendStatus(400)};
 
   const foundIndex = MOVIES.findIndex((movie) => movie.id === parseInt(req.params.id, 10));
+  console.log(foundIndex);
+  if (foundIndex < 0){
+    const newFilm = {
+      id : parseInt(req.params.id,10),
+      title,
+      duration,
+      budget,
+      link,
+    };
+    MOVIES.push(newFilm);
+    return res.json(newFilm);
+  };
 
-  if (foundIndex < 0) {return res.sendStatus(404)};
+  const updateFilm = {...MOVIES[foundIndex], ...req.body};
 
-  const updateMovie = {...MOVIES[foundIndex], ...req.body};
+  MOVIES[foundIndex] = updateFilm;
 
-  MOVIES[foundIndex] = updateMovie;
+  return res.json(updateFilm);
 
-  res.json(updateMovie);
 })
 
 module.exports = router;
