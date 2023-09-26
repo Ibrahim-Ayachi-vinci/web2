@@ -94,16 +94,4 @@ router.post('/', (req, res) => {
 
 });
 
-router.delete('/:id', (req, res) => {
-  
-  const findIndex = MOVIES.findIndex((film) => film.id === parseInt(req.params.id, 10));
-
-  if (findIndex < 0) return res.sendStatus(404);
-
-  const itemEnlver = MOVIES.splice(findIndex, 1);
-
-  res.json(itemEnlver);
-})
-
-
 module.exports = router;
