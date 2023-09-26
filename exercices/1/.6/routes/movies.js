@@ -74,7 +74,7 @@ router.post('/', (req, res) => {
 
   if (filmExistant){return res.sendStatus(409)}
 
-  MOVIES.find((movie) => {
+  MOVIES.map((movie) => {
       if(movie.id > lastIndex){
         lastIndex = movie.id;
       };
@@ -94,6 +94,54 @@ router.post('/', (req, res) => {
 
 });
 
+router.delete('/:id', (req,res) => {
+  console.log("Je suis dans la route delete");
 
+  const indexFound = MOVIES.findIndex((movie) => movie.id === parseInt(req.params.id,10));
+
+  if (indexFound < 0){return res.sendStatus(404)};
+
+  const itemRemove = MOVIES.splice(indexFound, 1);
+
+  res.json(itemRemove);
+});
+
+router.patch('/:id', (req,res) => {
+  const title = req?.body?.title?.length !== 0 ? req.body.title : undefined;
+  const duration = req?.body?.duration > 0 ? req.body.duration : undefined;
+  const budget = req?.body?.budget > 0 ? req.body.budget : undefined;
+  const link = req?.body?.link?.length !== 0 ? req.body.link : undefined;
+
+  if (!title && !duration && !budget && !link) {return res.sendStatus(400)};
+
+  const foundIndex = MOVIES.findIndex((movie) => movie.id === parseInt(req.params.id,10));
+
+  if (foundIndex < 0){return res.sendStatus(404)};
+
+  const updateMovie = {...MOVIES[foundIndex], ...req.body};
+
+  MOVIES[foundIndex] = updateMovie;
+
+  res.json(updateMovie);
+});
+
+router.put('/:id', (req, res) => {
+  const title = req?.body?.title?.length !== 0 ? req.body.title : undefined;
+  const duration = req?.body?.duration > 0 ? req.body.duration : undefined;
+  const budget = req?.body?.budget > 0 ? req.body.budget : undefined;
+  const link = req?.body?.link?.length !== 0 ? req.body.link : undefined;
+
+  if (!title || !duration || !budget || !link) {return res.sendStatus(400)};
+
+  const foundIndex = MOVIES.findIndex((movie) => movie.id === parseInt(req.params.id, 10));
+
+  if (foundIndex < 0) {return res.sendStatus(404)};
+
+  const updateMovie = {...MOVIES[foundIndex], ...req.body};
+
+  MOVIES[foundIndex] = updateMovie;
+
+  res.json(updateMovie);
+})
 
 module.exports = router;

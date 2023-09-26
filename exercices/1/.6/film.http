@@ -1,0 +1,28 @@
+### Read all movies
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/movies
+
+
+### Create a movie
+POST {{baseUrl}}/movies
+Content-Type: application/json
+
+{
+    "title":"START wars 6",
+    "duration":200,
+    "budget" : 900,
+    "link" : "https://moodle.vinci.be/my/"
+}
+
+
+### Delete movie identified by 2
+DELETE {{baseUrl}}/movies/2
+
+
+### Update the Movie identified by 3
+PATCH {{baseUrl}}/movies/3
+Content-Type: application/json
+
+{
+    "title":"Magic Green 2"
+}
