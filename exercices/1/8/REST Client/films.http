@@ -1,22 +1,22 @@
 @baseUrl = http://localhost:3000
 
-### Read all films
-GET {{baseUrl}}/films
+### Read all movies
+GET {{baseUrl}}/movies
 
-### Read all films with minimum-duration of 140min
-GET {{baseUrl}}/films/?minimum-duration=140
+### Read all movies with minimum-duration of 140min
+GET {{baseUrl}}/movies/?minimum-duration=140
 
-### Try to read films with wrong minimum-duration
-GET {{baseUrl}}/films/?minimum-duration=0
+### Try to read movies with wrong minimum-duration
+GET {{baseUrl}}/movies/?minimum-duration=0
 
 ### Read film with ID == 1
-GET {{baseUrl}}/films/1
+GET {{baseUrl}}/movies/1
 
 ### Read film which does not exist
-GET {{baseUrl}}/films/500
+GET {{baseUrl}}/movies/500
 
 ### Try to create an existing film
-POST {{baseUrl}}/films/
+POST {{baseUrl}}/movies/
 Content-Type: application/json
 
 {
@@ -27,7 +27,7 @@ Content-Type: application/json
 }
 
 ### Try to create a film with a parameter missing or empty string or string with whitespaces only
-POST {{baseUrl}}/films/
+POST {{baseUrl}}/movies/
 Content-Type: application/json
 
 {
@@ -38,7 +38,7 @@ Content-Type: application/json
 }
 
 ### Try to create a film with a wrong budget
-POST {{baseUrl}}/films/
+POST {{baseUrl}}/movies/
 Content-Type: application/json
 
 {
@@ -49,7 +49,7 @@ Content-Type: application/json
 }
 
 ### Create a film
-POST {{baseUrl}}/films/
+POST {{baseUrl}}/movies/
 Content-Type: application/json
 
 {
@@ -60,11 +60,11 @@ Content-Type: application/json
 }
 
 ### Delete the film with ID == 2
-DELETE {{baseUrl}}/films/2
+DELETE {{baseUrl}}/movies/2
 
 
 ### Update film with ID == 2
-PATCH {{baseUrl}}/films/2
+PATCH {{baseUrl}}/movies/2
 Content-Type: application/json
 
 {
@@ -73,7 +73,7 @@ Content-Type: application/json
 }
 
 ### Try to update film with ID == 2 with empty param
-PATCH {{baseUrl}}/films/2
+PATCH {{baseUrl}}/movies/2
 Content-Type: application/json
 
 {
@@ -81,7 +81,7 @@ Content-Type: application/json
 }
 
 ### Update film with ID == 2
-PUT {{baseUrl}}/films/2
+PUT {{baseUrl}}/movies/2
 Content-Type: application/json
 
 {
@@ -92,7 +92,7 @@ Content-Type: application/json
 }
 
 ### Try to update film with ID == 2 when missing one param
-PUT {{baseUrl}}/films/2
+PUT {{baseUrl}}/movies/2
 Content-Type: application/json
 
 {
@@ -102,7 +102,7 @@ Content-Type: application/json
 }
 
 ### Create new film with ID == 666
-PUT {{baseUrl}}/films/666
+PUT {{baseUrl}}/movies/666
 Content-Type: application/json
 
 {
